@@ -6,6 +6,31 @@ Developed by **Fayha Imran** as part of the internship Web Development Track (Ne
 
 ---
 
+## 🏆 Challenge Requirements Checklist
+
+Here is how the project maps directly to the challenge guidelines and specifications:
+
+### Core Pages Included:
+- [x] 🏠 **Home Page** (`/`): A landing hub showcasing portal stats, featured course highlights, benefits, and a call-to-action banner.
+- [x] 📚 **Courses Page** (`/courses`): An interactive directory featuring client-side search query filtering and category chip selectors.
+- [x] 👨‍🏫 **Instructors Page** (`/instructors`): Cards displaying expert profiles, rating scores, credentials, and subjects taught.
+- [x] 📘 **Course Details (Dynamic Route)** (`/courses/[slug]`): Renders detailed course syllabus, curriculum modules, and instructor bios using async `params` and `generateStaticParams()`.
+- [x] 📞 **Contact Page** (`/contact`): Form handling for admissions questions, ticketing feedback, and a custom vector SVG campus map.
+
+### Architectural Requirements:
+- [x] **Use App Router**: Project structure centered inside the `src/app/` directory.
+- [x] **Shared Layout**: Global navbar and footer configured within `layout.js` to preserve state across page transitions.
+- [x] **Navigation**: Interactive routing handled efficiently using the `next/link` component to optimize client-side transitions.
+- [x] **Dynamic Routing Examples**: Dynamic parameters resolved dynamically for `/courses/web-development`, `/courses/ai-engineering`, etc.
+- [x] **Static Mock Data**: Structured database array exported from `src/data/courses.js`.
+
+### Bonus Achievements:
+- [x] **Custom 404 Page**: Playful educational error layout created inside `src/app/not-found.js`.
+- [x] **Responsive Layouts via Tailwind CSS**: Sleek UI fully adapted for mobile, tablet, and desktop viewports using Tailwind v4.
+- [x] **Organized Reusable Components**: Extracted modular UI segments into the `src/components/` folder.
+
+---
+
 ## 🚀 Key Features
 
 *   **Next.js App Router & Layouts**: Demonstrates global layouts using nested layouts to keep reusable headers (`Navbar`) and footers (`Footer`) synchronized across pages.
@@ -16,7 +41,7 @@ Developed by **Fayha Imran** as part of the internship Web Development Track (Ne
 *   **Dynamic SEO Optimization**: Employs React 19's native metadata hoisting alongside Next.js's dynamic `generateMetadata()` to configure custom, search-engine-friendly `<title>` and `<meta>` tags per course.
 *   **Admissions Form & Vector Campus Map**: Renders an interactive contact form with dynamic support ticket assignment and a custom inline vector SVG campus map illustration.
 *   **Custom 404 "Lost in the Library" Page**: Gracefully handles broken paths with custom themed redirections back to safety.
-*   **Tailwind CSS v4 Premium Dark Styling**: Sleek, slate-themed layout featuring card micro-animations, neon glow backdrops, and seamless responsive design for mobile, tablet, and desktop viewports.
+*   **Tailwind CSS v4 Premium Dark Styling**: Sleek, slate-themed layout featuring card micro-interactions, neon glow backdrops, and seamless responsive design for mobile, tablet, and desktop viewports.
 
 ---
 
