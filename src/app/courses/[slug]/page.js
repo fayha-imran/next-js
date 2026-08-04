@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { courses, instructors } from "../../../data/courses";
 import EnrollmentSidebar from "../../../components/EnrollmentSidebar";
+import CourseCard from "../../../components/CourseCard";
+import SectionTitle from "../../../components/SectionTitle";
 
 // Next.js App Router Dynamic SEO Metadata Generation
 export async function generateMetadata({ params }) {
@@ -41,6 +43,19 @@ export default async function CourseDetailPage({ params }) {
   // Find instructor details
   const instructor = instructors.find((inst) => inst.name === course.instructor);
 
+  // Related courses:
+  // 1. Exclude the current course.
+  // 2. Prioritize courses with the same category.
+  // 3. Sort remaining by rating, select top 3.
+  const relatedCourses = courses
+    .filter((c) => c.slug !== slug)
+    .sort((a, b) => {
+      if (a.category === course.category && b.category !== course.category) return -1;
+      if (a.category !== course.category && b.category === course.category) return 1;
+      return b.rating - a.rating;
+    })
+    .slice(0, 3);
+
   return (
     <div className="space-y-12 animate-fade-in">
       {/* Breadcrumbs */}
@@ -77,7 +92,7 @@ export default async function CourseDetailPage({ params }) {
 
           {/* Description */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-white tracking-tight">Course Description</h2>
+            <SectionTitle title="Course Description" as="h2" />
             <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
               {course.description}
             </p>
@@ -85,7 +100,7 @@ export default async function CourseDetailPage({ params }) {
 
           {/* What you'll learn */}
           <section className="p-6 sm:p-8 rounded-2xl bg-slate-900/30 border border-slate-800 space-y-4">
-            <h2 className="text-xl font-bold text-white tracking-tight">What You'll Learn</h2>
+            <SectionTitle title="What You'll Learn" as="h2" />
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {course.learn.map((item, idx) => (
                 <li key={idx} className="flex gap-3 text-xs sm:text-sm text-slate-300 items-start">
@@ -102,7 +117,7 @@ export default async function CourseDetailPage({ params }) {
 
           {/* Syllabus Curriculum Accordions */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-white tracking-tight">Syllabus Outline</h2>
+            <SectionTitle title="Syllabus Outline" as="h2" />
             <div className="space-y-3">
               {course.curriculum.map((module, idx) => (
                 <details
@@ -137,7 +152,7 @@ export default async function CourseDetailPage({ params }) {
           {/* Instructor Bio Section */}
           {instructor && (
             <section className="space-y-4 border-t border-slate-900 pt-8">
-              <h2 className="text-xl font-bold text-white tracking-tight">Your Instructor</h2>
+              <SectionTitle title="Your Instructor" as="h2" />
               
               <div className="flex flex-col sm:flex-row gap-6 p-6 rounded-2xl bg-slate-900/30 border border-slate-800">
                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center font-bold text-xl flex-shrink-0 mx-auto sm:mx-0 shadow-md ${instructor.theme}`}>
@@ -169,6 +184,21 @@ export default async function CourseDetailPage({ params }) {
           />
         </div>
       </div>
+
+      {/* Related Courses Section */}
+      {relatedCourses.length > 0 && (
+        <section className="space-y-8 border-t border-slate-900 pt-12 mt-12">
+          <SectionTitle
+            title="Related Courses"
+            subtitle="Explore other curricula designed to expand your capabilities."
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {relatedCourses.map((c) => (
+              <CourseCard key={c.slug} course={c} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

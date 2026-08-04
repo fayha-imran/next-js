@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Button from "./Button";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -66,12 +67,9 @@ export default function Navbar() {
             <button className="text-sm font-medium text-slate-300 hover:text-white transition-colors cursor-pointer">
               Log In
             </button>
-            <Link
-              href="/courses"
-              className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-lg shadow-indigo-600/20 hover:shadow-indigo-500/30 transition-all cursor-pointer transform hover:-translate-y-0.5"
-            >
+            <Button href="/courses" size="sm">
               Get Started
-            </Link>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -136,13 +134,14 @@ export default function Navbar() {
               >
                 Log In
               </button>
-              <Link
+              <Button
                 href="/courses"
                 onClick={() => setIsOpen(false)}
-                className="w-full py-2 text-center text-sm font-semibold rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg transition-all"
+                className="w-full py-2"
+                size="sm"
               >
                 Get Started
-              </Link>
+              </Button>
             </div>
           </div>
         </div>

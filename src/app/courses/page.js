@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { courses } from "../../data/courses";
 import CourseCard from "../../components/CourseCard";
+import SectionTitle from "../../components/SectionTitle";
+import Button from "../../components/Button";
 
 export default function CoursesPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,13 +28,12 @@ export default function CoursesPage() {
       <meta name="description" content="Explore our industry-focused curriculum containing web development, UX product design, and deep learning engineering." />
 
       {/* Header section */}
-      <section className="space-y-4">
-        <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
-          Courses Catalog
-        </h1>
-        <p className="text-slate-400 max-w-2xl leading-relaxed text-sm sm:text-base">
-          Browse through our modern curriculum designed to teach you theoretical pillars and practical codebases side-by-side.
-        </p>
+      <section>
+        <SectionTitle
+          as="h1"
+          title="Courses Catalog"
+          subtitle="Browse through our modern curriculum designed to teach you theoretical pillars and practical codebases side-by-side."
+        />
       </section>
 
       {/* Filter and Search Bar Section */}
@@ -90,15 +91,16 @@ export default function CoursesPage() {
             <p className="text-xs text-slate-500 leading-relaxed">
               We couldn't find any courses matching your search query. Try clearing your filters or testing other terms.
             </p>
-            <button
+            <Button
               onClick={() => {
                 setSearchQuery("");
                 setSelectedCategory("All");
               }}
-              className="px-4 py-2 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors cursor-pointer"
+              variant="secondary"
+              size="sm"
             >
               Reset Search & Filters
-            </button>
+            </Button>
           </div>
         )}
       </section>

@@ -1,5 +1,7 @@
 import { instructors } from "../../data/courses";
 import InstructorCard from "../../components/InstructorCard";
+import SectionTitle from "../../components/SectionTitle";
+import Button from "../../components/Button";
 
 export const metadata = {
   title: "Meet Our Instructors | EduPortal",
@@ -10,13 +12,12 @@ export default function InstructorsPage() {
   return (
     <div className="space-y-12 animate-fade-in">
       {/* Header section */}
-      <section className="space-y-4">
-        <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white font-sans">
-          Our Expert Faculty
-        </h1>
-        <p className="text-slate-400 max-w-2xl leading-relaxed text-sm sm:text-base">
-          Our mentors are active industry leaders, former FAANG engineers, and prestigious research scholars. They bring real-world challenges directly into your workspace.
-        </p>
+      <section>
+        <SectionTitle
+          as="h1"
+          title="Our Expert Faculty"
+          subtitle="Our mentors are active industry leaders, former FAANG engineers, and prestigious research scholars. They bring real-world challenges directly into your workspace."
+        />
       </section>
 
       {/* Grid of Instructors */}
@@ -33,12 +34,14 @@ export default function InstructorsPage() {
           We are always searching for experienced authors, engineers, and designers who are passionate about sharing their expertise. Contact our syllabus team.
         </p>
         <div>
-          <a
+          <Button
             href="mailto:careers@eduportal.edu"
-            className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-indigo-400 hover:text-indigo-300 text-xs font-semibold border border-slate-800 hover:border-slate-700 transition-all cursor-pointer"
+            variant="secondary"
+            size="sm"
+            className="text-indigo-400 hover:text-indigo-300"
           >
             Apply as Instructor
-          </a>
+          </Button>
         </div>
       </section>
     </div>

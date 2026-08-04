@@ -1,4 +1,5 @@
-import Link from "next/link";
+import SectionTitle from "../components/SectionTitle";
+import Button from "../components/Button";
 
 export const metadata = {
   title: "404 - Page Not Found | EduPortal",
@@ -18,29 +19,22 @@ export default function NotFound() {
         </div>
       </div>
 
-      <div className="space-y-3 max-w-md">
-        <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-          Lost in the Library?
-        </h1>
-        <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-          The course syllabus or academic resources you are searching for might have been archived, renamed, or moved to a different semester.
-        </p>
-      </div>
+      <SectionTitle
+        title="Lost in the Library?"
+        subtitle="The course syllabus or academic resources you are searching for might have been archived, renamed, or moved to a different semester."
+        as="h2"
+        align="center"
+        className="max-w-md"
+      />
 
       {/* Action buttons */}
       <div className="flex flex-wrap items-center justify-center gap-4">
-        <Link
-          href="/"
-          className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md shadow-indigo-600/20 hover:shadow-indigo-500/30 transition-all cursor-pointer"
-        >
+        <Button href="/" size="sm">
           Return Home
-        </Link>
-        <Link
-          href="/courses"
-          className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 hover:border-slate-700 transition-all cursor-pointer"
-        >
+        </Button>
+        <Button href="/courses" variant="secondary" size="sm">
           Browse Courses
-        </Link>
+        </Button>
       </div>
 
       {/* Decorative SVG illustration of an open book */}

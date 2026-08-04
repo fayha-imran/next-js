@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { courses } from "../data/courses";
 import CourseCard from "../components/CourseCard";
+import Button from "../components/Button";
+import SectionTitle from "../components/SectionTitle";
 
 export default function HomePage() {
   // Get first 3 featured courses
@@ -31,18 +33,12 @@ export default function HomePage() {
         </p>
 
         <div className="pt-6 flex flex-wrap justify-center items-center gap-4">
-          <Link
-            href="/courses"
-            className="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold shadow-lg shadow-indigo-600/20 hover:shadow-indigo-500/30 transition-all transform hover:-translate-y-0.5"
-          >
+          <Button href="/courses" size="lg">
             Explore Catalog
-          </Link>
-          <Link
-            href="/instructors"
-            className="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white text-sm font-semibold border border-slate-800 hover:border-slate-700 transition-all transform hover:-translate-y-0.5"
-          >
+          </Button>
+          <Button href="/instructors" variant="secondary" size="lg">
             Meet Instructors
-          </Link>
+          </Button>
         </div>
       </section>
 
@@ -69,10 +65,10 @@ export default function HomePage() {
       {/* Featured Courses Section */}
       <section className="space-y-10">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div className="space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Featured Courses</h2>
-            <p className="text-sm text-slate-400">Discover our most popular courses and start learning today.</p>
-          </div>
+          <SectionTitle
+            title="Featured Courses"
+            subtitle="Discover our most popular courses and start learning today."
+          />
           <Link
             href="/courses"
             className="group flex items-center gap-1 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
@@ -93,10 +89,12 @@ export default function HomePage() {
 
       {/* Benefits Section */}
       <section className="space-y-12">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Why Choose EduPortal?</h2>
-          <p className="text-sm text-slate-400">We provide a premium educational infrastructure designed for real-world excellence.</p>
-        </div>
+        <SectionTitle
+          title="Why Choose EduPortal?"
+          subtitle="We provide a premium educational infrastructure designed for real-world excellence."
+          align="center"
+          className="max-w-2xl"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800 space-y-4 hover:border-indigo-500/30 transition-all duration-300">
@@ -143,19 +141,16 @@ export default function HomePage() {
         <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-indigo-500/10 rounded-full blur-[60px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-emerald-500/10 rounded-full blur-[60px] pointer-events-none" />
 
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Ready to Elevate Your Skillset?
-        </h2>
-        <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto leading-relaxed">
-          Create your account today, unlock free preview lessons, and join our Discord community of over 10,000 active developers.
-        </p>
+        <SectionTitle
+          title="Ready to Elevate Your Skillset?"
+          subtitle="Create your account today, unlock free preview lessons, and join our Discord community of over 10,000 active developers."
+          align="center"
+          className="max-w-xl mx-auto"
+        />
         <div className="pt-4">
-          <Link
-            href="/courses"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white hover:bg-slate-100 text-slate-950 text-sm font-semibold shadow-lg shadow-white/10 transition-all transform hover:-translate-y-0.5 cursor-pointer"
-          >
+          <Button href="/courses" variant="white" size="lg">
             Start Learning Now
-          </Link>
+          </Button>
         </div>
       </section>
     </div>

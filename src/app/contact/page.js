@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { contactDetails } from "../../data/courses";
+import SectionTitle from "../../components/SectionTitle";
+import Button from "../../components/Button";
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({
@@ -33,13 +35,12 @@ export default function ContactPage() {
       <meta name="description" content="Get in touch with EduPortal student assistance team. Ask about courses, pricing, or corporate partnerships." />
 
       {/* Header section */}
-      <section className="space-y-4">
-        <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
-          Contact Admissions
-        </h1>
-        <p className="text-slate-400 max-w-2xl leading-relaxed text-sm sm:text-base">
-          Have questions about the program curriculum, corporate billing, or scholarship applications? Drop us a line and our admissions officers will get back to you within 24 hours.
-        </p>
+      <section>
+        <SectionTitle
+          as="h1"
+          title="Contact Admissions"
+          subtitle="Have questions about the program curriculum, corporate billing, or scholarship applications? Drop us a line and our admissions officers will get back to you within 24 hours."
+        />
       </section>
 
       {/* Main Grid: Form on left, Details/Map on right */}
@@ -61,12 +62,13 @@ export default function ContactPage() {
                   Thank you for reaching out. We have logged your request and assigned it ticket #{(Math.floor(Math.random() * 90000) + 10000)}. Check your inbox shortly.
                 </p>
               </div>
-              <button
+              <Button
                 onClick={() => setStatus("idle")}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-semibold transition-colors cursor-pointer"
+                variant="secondary"
+                size="sm"
               >
                 Send Another Message
-              </button>
+              </Button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -128,13 +130,14 @@ export default function ContactPage() {
               </div>
 
               <div className="pt-2">
-                <button
+                <Button
                   type="submit"
                   disabled={status === "sending"}
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-800 text-white font-semibold text-sm shadow-lg shadow-indigo-600/20 hover:shadow-indigo-500/30 transition-all cursor-pointer disabled:cursor-wait"
+                  size="lg"
+                  className="w-full sm:w-auto"
                 >
                   {status === "sending" ? "Sending Request..." : "Send Message"}
-                </button>
+                </Button>
               </div>
             </form>
           )}

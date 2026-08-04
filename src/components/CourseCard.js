@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Button from "./Button";
 
 export default function CourseCard({ course }) {
   // Destructure course details
@@ -107,15 +107,16 @@ export default function CourseCard({ course }) {
 
       {/* Action Footer */}
       <div className="px-6 pb-6 pt-2">
-        <Link
+        <Button
           href={`/courses/${slug}`}
-          className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-200 hover:text-white text-xs font-semibold tracking-wider uppercase border border-slate-700/60 hover:border-indigo-500 shadow-sm transition-all duration-300"
+          variant="card"
+          size="sm"
         >
           <span>View Course Details</span>
           <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
           </svg>
-        </Link>
+        </Button>
       </div>
     </div>
   );
